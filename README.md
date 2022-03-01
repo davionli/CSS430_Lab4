@@ -63,28 +63,39 @@ int *customer_in_chair_;
 
 ## Discussion
 
-### Theoretically Calculation
+### Project Limitations
+
+When deal with a very large number threads, this implementation seems very low efficient. 
+Due to the mutex for almost all the sections. Threads no really works paralleled in non-critical secions.
+I did a test for 32,000 customer, there is no segmentation fault, but it runs really slow.
+I tracked the CPU usage, The instant usage jumps to 300%. I don't know how can it happens. 
+
+### Possible Extensions and Optimization
+
+I think there are some conditions may can merge and reduce, so the thread doesn't need to wake up every single step.
+Reduce the size of critical section can also optimize the project. 
+
+### Step5 and Step6 Discussion
+
+#### Theoretically Calculation
 
 - Customer visits the shop in a rand() % 1000 ms, which is in range of [0 - 999] ms.
 - Worst case: every customer visits the shop at 0 ms.
 - Best case: every customer visits the shop at 999 ms.
 - Average case: every customer visits the shop at 499.5 ms.
 
-### Case 1: 1 barber, 200 customers, and 1000 ms per haircut. How many chairs are needs?
+#### Case 1: 1 barber, 200 customers, and 1000 ms per haircut. How many chairs are needs?
 
 - Worst case: we need 199 chairs for all customers.
 - Best case: we need 1 chair for all customers.
 - Average case: we need 2 chairs for all customers.
 - Actrual situation: after 50 tests, we need about 103 chairs to avoid customer loss.
 
-### Case 2: 0 chair, 200 customers, and 1000 ms per haircut. How many barbers are needs?
+#### Case 2: 0 chair, 200 customers, and 1000 ms per haircut. How many barbers are needs?
 
 - Worst case: we need 199 barbers for all customers.
 - Best case: we need 2 barbers for all customers.
 - Average case: we need 3 barbers for all customers.
 - Actrual situation: after 50 tests, we need about 6 barbers to avoid customer loss.
 
-## Note
 
-I did a test for 32,000 customer, there is no segmentation fault, but it runs really slow. 
-I tracked the CPU usage, The instant usage jumps to 300%. I don't know how can it happens. 

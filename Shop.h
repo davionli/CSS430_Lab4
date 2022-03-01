@@ -34,8 +34,7 @@ private:
     const int max_waiting_cust_;              // the max number of threads that can wait
     int num_barbers_;
     int *customer_in_chair_;
-    int num_in_service_;    
-    bool *in_service_;        
+    int num_in_service_;         
     bool *money_paid_;
     queue<int> waiting_chairs_;  // includes the ids of all waiting threads
     queue<int> sleeping_barbers_; // includes the ids of all sleeping barbers
@@ -50,7 +49,6 @@ private:
     void init();
     string int2string(int i);
     void print(bool who, int person, string message);
-    void printQueue(queue<int> q);
 };
 
 #endif

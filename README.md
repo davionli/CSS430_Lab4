@@ -1,19 +1,19 @@
 # CSS430 Lab4 Documentation
 
 ## Overview
----
+
 This project is to extend the Single-barber Multiple-customer to Mutiple-barber Multiple-customer
 with pthread_mutex lock and pthread_condition_signal.
 
 ## Instruction
----
+
 ### I did a couple modify in the original driver.cpp file.
 
 1. I added forth argument of number of barbers in order to implement multiple barbers.
 2. I added a premeter barber_id for customer object, so the customer knows who is the barber.
 
 ## Implementation
----
+
 
 ### Workflow
 
@@ -62,7 +62,7 @@ int *customer_in_chair_;
 ```
 
 ## Discussion
----
+
 ### Theoretically Calculation
 
 - Customer visits the shop in a rand() % 1000 ms, which is in range of [0 - 999] ms.
@@ -85,6 +85,6 @@ int *customer_in_chair_;
 - Actrual situation: after 50 tests, we need about 6 barbers to avoid customer loss.
 
 ## Note
----
+
 I did a test for 32,000 customer, there is no segmentation fault, but it runs really slow. 
 I tracked the CPU usage, The instant usage jumps to 300%. I don't know how can it happens. 
